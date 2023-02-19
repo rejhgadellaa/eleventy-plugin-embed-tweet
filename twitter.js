@@ -3,6 +3,7 @@ const request = require('request-promise')
 const { promises: fs } = require("fs");
 const syncFs = require('fs')
 
+const requireMainFilename = require('require-main-filename')()
 
 module.exports = {
     getTweet,
@@ -282,7 +283,7 @@ function getCachedTweetPath(options) {
     let path = require("path")
 
     // get directory for main thread
-    let appPath = require.main.filename // C:\user\github\app\node_modules\@11ty\eleventy\cmd.js
+    let appPath = requireMainFilename // C:\user\github\app\node_modules\@11ty\eleventy\cmd.js
     let pos = appPath.indexOf("node_modules")
     let appRoot = appPath.substr(0, pos) // C:\user\github\app\
 
